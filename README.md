@@ -111,11 +111,11 @@ To create a Glyph Toy preview/ thumbnail you can reference this [thumbnail templ
 
 ### User Interaction
 
-`Glyph Toys` are commonly controlled using `Glyph Touch` on the back of the device. There are mainly three types of interaction with `Glyph Touch`:
+`Glyph Toys` are commonly controlled using `Glyph BUtton` on the back of the device. There are mainly three types of interaction with `Glyph Button`:
 
-- **Short press**: A quick press on `Glyph Touch` cycles through available toys. When your toy is selected and shown on the `Glyph Matrix`, its functions start. Tapping again navigates to the next toy. 
-- **Long press**: A long press on `Glyph Touch` sends a `"change"` event to the currently selected toy, triggering an action you defined. For example, in the preinstalled camera toy, the first long press activates the camera and subsequent presses capture photos. For the timer toy, it toggles start/stop. (This feature must be enabled in `AndroidManifest.xml`).
-- **Touch-down & Touch-up**: If the user keeps the `Glyph Touch` held down & released, it will trigger `"action_down"` & `"action_up"` events 
+- **Short press**: A quick press on `Glyph Button` cycles through available toys. When your toy is selected and shown on the `Glyph Matrix`, its functions start. Tapping again navigates to the next toy. 
+- **Long press**: A long press on `Glyph Button` sends a `"change"` event to the currently selected toy, triggering an action you defined. For example, in the preinstalled camera toy, the first long press activates the camera and subsequent presses capture photos. For the timer toy, it toggles start/stop. (This feature must be enabled in `AndroidManifest.xml`).
+- **Touch-down & Touch-up**: If the user keeps the `Glyph Button` held down & released, it will trigger `"action_down"` & `"action_up"` events 
 
 Additionally, toys can also utilize other control inputs such as the device's gyroscope and accelerometer, to create more engaging experiences like the `Magic 8 Ball` & `Leveler Toy` we co-created with community members. Please note that only one toy can be activated at a time.
 
