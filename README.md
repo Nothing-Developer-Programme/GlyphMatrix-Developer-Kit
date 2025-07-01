@@ -145,7 +145,7 @@ public boolean onUnbind(Intent intent) {
 
 #### Handling the "Change" Event
 
-Glyph Touch relevant event is handled using GlyphToy class. To react with user's interaction to the Glyph Touch, you must create a `Handler` to process the event and a `Messenger` to communicate with the system. The `IBinder` from this `Messenger` must be returned by your `onBind()` method.
+Glyph Button relevant event is handled using GlyphToy class. To react with user's interaction to the Glyph Button, you must create a `Handler` to process the event and a `Messenger` to communicate with the system. The `IBinder` from this `Messenger` must be returned by your `onBind()` method.
 
 The code below shows how to receive and handle the event, in this case the long press (change) event.
 
