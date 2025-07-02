@@ -3,7 +3,7 @@
 
 The Glyph Matrix Developer Kit provides everything you need to know before creating a custom Glyph Matrix experience **in your app** or **building your own Glyph Toy**  on compatible devices.
 
-At its core is the GlyphMatrixSDK—an Android library that can convert your designs into Glyph Matrix Data and rendering it frame by frame on the Glyph Matrix. It also provides you with identifiers so you can handle events relevant to Glyph Touch.
+At its core is the GlyphMatrixSDK—an Android library that can convert your designs into Glyph Matrix Data and rendering it frame by frame on the Glyph Matrix. It also provides you with identifiers so you can handle events relevant to Glyph Button.
 
 
 This documentation contains the following three sections
@@ -20,9 +20,9 @@ Note that while the sample code in this README is written in Java, we also provi
 ### 1. GlyphMatrixSDK Integration
 
 1. After creating a new Android project, create a libs folder under your main app module.
-2. Copy the SDK library e.g. GlyphMatrixSDK1.0.aar file from this repository into the libs directory.
+2. Copy the SDK library e.g. GlyphMatrixSDK.aar file from this repository into the libs directory.
 3. Add the SDK as a library dependency in your build.gradle file. If you're using Android Studio, you can also refer to the "Add your AAR or JAR as a dependency" section on [developer.android.com](https://developer.android.com/studio/projects/android-library#psd-add-aar-jar-dependency) to learn
- how to do it, make sure the path you use is something like "libs/GlyphMatrixSDK1.0.aar"
+ how to do it, make sure the path you use is something like "libs/GlyphMatrixSDK.aar"
 
 ### 2. AndroidManifest.xml Configuration
 
