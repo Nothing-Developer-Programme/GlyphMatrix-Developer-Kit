@@ -9,7 +9,7 @@ At its core is the GlyphMatrixSDK—an Android library that can convert your des
 This documentation contains the following three sections
 
 - [**Getting Started**](#getting-started): How to integrate the GlyphMatrixSDK and configure your development environment
-- [**Developing a Glyph Toy Service**](#developing-a-glyph-toy-service): How to manage the service life cycle for Glyph Toy, handle interaction，and behavior of toy service if it has AOD capability.
+- [**Developing a Glyph Toy Service**](#developing-a-glyph-toy-service): How to manage the service life cycle for Glyph Toy, handle interaction, and behavior of toy service if it has AOD capability.
 - [**API Reference**](#api-reference): Complete documentation of classes, methods
 
 Note that while the sample code in this README is written in Java, we also provide a complete demo project for learning building Glyph Toys that you can reference in [GlyphMatrix-Example-Project](https://github.com/KenFeng04/GlyphMatrix-Example-Project)
