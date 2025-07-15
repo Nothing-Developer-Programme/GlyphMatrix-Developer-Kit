@@ -44,7 +44,7 @@ To ensure your Nothing Phone setting recognises and can display your Glyph Toys,
 
 The following code demonstrates how to register two toys. Each service includes metadata for the toy's name, preview thumbnail image (displayed on the Glyph Toys settings page), and supported behaviour. The first example provides a complete setup with optional features, while the second shows a minimal configuration.
 
-To create a Glyph Toy preview/ thumbnail you can reference this [thumbnail template](https://www.figma.com/design/ryjvvPM2ZxI3OGdajSzb5J/Glyph-Toy--Thumbnail-template?node-id=1-12&t=9fImWPH8fzC7GO9x-1) in Figma
+You can use this Figma [plugin](https://www.figma.com/community/plugin/1526505846480298025) to create a Glyph Toy preview for the setting page.
 
 **Note**: Replace the class names, and resource references in the examples below with your own before using.<br>
 
