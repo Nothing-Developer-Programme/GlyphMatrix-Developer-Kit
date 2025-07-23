@@ -1,14 +1,14 @@
-# Glyph Matrix Developer Kit 
+# Glyph Matrix Developer Kit
 
 
 The Glyph Matrix Developer Kit provides everything you need to know before creating a custom Glyph Matrix experience **in your app** or **building your own Glyph Toy**  on compatible devices.
 
-At its core is the GlyphMatrixSDK—an Android library that can convert your designs into Glyph Matrix Data and rendering it frame by frame on the Glyph Matrix. It also provides you with identifiers so you can handle events relevant to Glyph Button.
+At its core is the Glyph Matrix Android library that can convert your designs into Glyph Matrix Data and rendering it frame by frame on the Glyph Matrix. It also provides you with identifiers so you can handle events relevant to Glyph Button.
 
 
 This documentation contains the following three sections
 
-- [**Getting Started**](#getting-started): How to integrate the GlyphMatrixSDK and configure your development environment
+- [**Getting Started**](#getting-started): How to integrate the Glyph Matrix Android Library, configure your development environment and create preview iamge for you Glyph Toys
 - [**Developing a Glyph Toy Service**](#developing-a-glyph-toy-service): How to manage the service life cycle for Glyph Toy, handle interaction, and behavior of toy service if it has AOD capability.
 - [**API Reference**](#api-reference): Complete documentation of classes, methods
 
@@ -17,11 +17,11 @@ Note that while the sample code in this README is written in Java, we also provi
 ## Getting Started
 
 
-### 1. GlyphMatrixSDK Integration
+### 1. Glyph Matrix Library Integration
 
 1. After creating a new Android project, create a libs folder under your main app module.
-2. Copy the SDK library e.g. GlyphMatrixSDK.aar file from this repository into the libs directory.
-3. Add the SDK as a library dependency in your build.gradle file. If you're using Android Studio, you can also refer to the "Add your AAR or JAR as a dependency" section on [developer.android.com](https://developer.android.com/studio/projects/android-library#psd-add-aar-jar-dependency) to learn
+2. Copy the Android library e.g. GlyphMatrixSDK.aar file from this repository into the libs directory.
+3. Add the library as a library dependency in your build.gradle file. If you're using Android Studio, you can also refer to the "Add your AAR or JAR as a dependency" section on [developer.android.com](https://developer.android.com/studio/projects/android-library#psd-add-aar-jar-dependency) to learn
  how to do it, make sure the path you use is something like "libs/GlyphMatrixSDK.aar"
 
 ### 2. AndroidManifest.xml Configuration
@@ -38,13 +38,17 @@ Add the following line within the `<manifest>` tag in AndroidManifest.xml
 
 #### 2.2 Service Registration For Glyph Toys
 
-> **Note**: This section is only required if you're developing Glyph Toys. If you're only integrating the GlyphMatrixSDK into your existing application, you can skip this section.
+> **Note**: This section is only required if you're developing Glyph Toys. If you're only integrating the Glyph Matrix Library into your existing application, you can skip this section.
 
 To ensure your Nothing Phone setting recognises and can display your Glyph Toys, you'll need to register each toy as a service within the `<application>` tag of your  `AndroidManifest.xml ` file.
+The following code demonstrates how to register two toys. Each service includes metadata for the toy's name, preview image, and supported behaviour(optional).
 
-The following code demonstrates how to register two toys. Each service includes metadata for the toy's name, preview thumbnail image (displayed on the Glyph Toys settings page), and supported behaviour. The first example provides a complete setup with optional features, while the second shows a minimal configuration.
+To prepare a preview image, please refer to [Section 3: Create your Glyph Toy preview](#3-create-your-glyph-toy-preview).
 
-You can use this Figma [plugin](https://www.figma.com/community/plugin/1526505846480298025) to create a Glyph Toy preview for the setting page.
+<img src="image/Glyph Toy AndroidManifest.xml.svg" alt="100widget @Glyph Toy AndroidManifest.xml" width="900"/>
+
+
+The first example provides a complete setup with optional features, while the second shows a minimal configuration.
 
 **Note**: Replace the class names, and resource references in the examples below with your own before using.<br>
 
@@ -106,6 +110,21 @@ You can use this Figma [plugin](https://www.figma.com/community/plugin/152650584
         android:resource="@drawable/img_toy_preview_second"/>
 </service>
 ```
+
+#### 3 Create your Glyph Toy preview 
+
+To create a Glyph Toy preview image that matches the official toy and provides your users with a consistent experience, you can reference the specifications below and the [Figma template](https://www.figma.com/design/ryjvvPM2ZxI3OGdajSzb5J/Glyph-Toy--preview-icon-template?node-id=1-12&t=HvVOxxNmb5EK2i2g-1). We have also created a [Figma plugin](https://www.figma.com/community/plugin/1526505846480298025) that can automatically convert any 1:1 design image into a Glyph Matrix Preview image to save you some time :)
+
+We recommend exporting your preview image as an SVG and to learn how to import your SVG preview into your project, check [Running Vector Asset Studio](https://developer.android.com/studio/write/vector-asset-studio#svg) section in the Android studio documentation.
+
+
+<p align="center">
+  <img src="image/Phone 3 Glyph Toy icon specification.svg" width="100%" alt="Phone 3 Glyph Toy icon specification">
+</p>
+
+
+
+
 
 ## Developing a Glyph Toy Service
 
@@ -177,7 +196,7 @@ private final Messenger serviceMessenger = new Messenger(serviceHandler);
 ```
 
 ### Toy with AOD capability
-If you have set your toy as an AOD toy, your toy will receive EVENT_AOD every minutes when your toy has been selected as aod toy.
+If you have set your toy as an AOD toy, your toy will receive EVENT_AOD every minute when your toy has been selected as aod toy.
 
 
 
@@ -228,7 +247,9 @@ GlyphMatrixManager is responsible for:
 GlyphMatrixFrame is in charge of handling and displaying the Glyph Matrix. Its default size is 25x25, but you can easily customise it using the Builder. 
 
 <p align="center">
-  <img src="image/pixel_coordinate.png" alt="Example of recommended icon locations">
+  <div align="center" style="width:100%;">
+    <img src="image/Phone 3 Glyph Matrix LED allocation.svg" alt="Phone 3 Glyph Matrix LED allocation" style="display:block; width:100%; max-width:100%;">
+  </div>
 </p>
 
 Developers can use this class to render GlyphMatrix objects into the necessary Matrix data and control how multiple objects can be overlaid on the Glyph Matrix based on the layer they are in using the builder.
