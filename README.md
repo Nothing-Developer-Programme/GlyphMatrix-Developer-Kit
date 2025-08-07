@@ -128,7 +128,7 @@ We recommend exporting your preview image as an SVG and to learn how to import y
 
 ## Developing a Glyph Toy Service
 
-### User Interaction
+### User Interaction with Glyph Button
 
 `Glyph Toys` are commonly controlled using `Glyph Button` on the back of the device. There are mainly three types of interaction with `Glyph Button`:
 
@@ -220,8 +220,6 @@ private final Handler serviceHandler = new Handler(Looper.getMainLooper()) {
 };
 ```
 
-
-
 ## API Reference
 
 ### GlyphMatrixManager
@@ -232,15 +230,29 @@ GlyphMatrixManager is responsible for:
 - **Registering your application** to use that service/device.
 - **Updating the display** of a Glyph Matrix with either raw color data or structured frame objects.
 
+In addition to displaying content on the Glyph Matrix through the Glyph Toy service, you can directly control Glyph Matrix from your own app using GDK. For app-based control, always use the `setAppMatrixFrame` function instead of `setMatrixFrame`, as the latter may conflict with active Glyph Toys. This feature requires the phone system version on 20250801 or later.
+
+Note: The Glyph Toy has a higher display priority than third party app usage on Glyph Matrix. If the user interacts with the Glyph Button, the Glyph Toy carousel it triggers will override your app’s content on the Matrix.
+
+<p align="center">
+  <img src="image/Glyph Matrix Display Priority.svg" alt="Glyph Matrix Priority" style="display:block; width:100%; max-width:100%;">
+</p>
+
+
+
 #### Public Methods
 
 | Return type                    | Method                         | Description                    |
 |:-------------------------------|:-------------------------------|:-------------------------------|
 | void           | `init(Callback callback)`       | Used for binding the Service. It is recommended to be created when components start.            |
 | void           | `unInit()`                      | Used for unbinding the Service. It is recommended to be destroyed when components end.          |
+| void           | `closeAppMatrix()`              | Closes the app matrix display. Use this function to stop displaying content on the Glyph Matrix from your app. Required phone system version on 20250801 or later. |
 | void           | `register(String target)`       | Register your app for service. You need to send which target device you are working on. For Phone 3, this should be Glyph.DEVICE_23112|
 | void           | `setMatrixFrame(int[] color)`   | Updates the Glyph Matrix display using raw color data. This overload expects a 25x25 integer array. |
 | void           | `setMatrixFrame(GlyphMatrixFrame)` | Updates the Glyph Matrix display using a structured GlyphMatrixFrame object.                 |
+| void           | `setAppMatrixFrame(int[] color)` | Same as setMatrixFrame(int[] color). If you want to use Glyph Matrix in your app. Please use this function to update Glyph Matrix display. Required phone system version on 20250801 or later. |
+| void           | `setAppMatrixFrame(GlyphMatrixFrame frame)` | Same as setMatrixFrame(GlyphMatrixFrame frame). If you want to use Glyph Matrix in your app. Please use this function to update Glyph Matrix display. phone system version on 20250801 or later. |
+
 
 ### GlyphMatrixFrame
 
@@ -323,7 +335,7 @@ GlyphMatrixObject.Builder is a static inner class of GlyphMatrixObject, used to 
 | void           | `setText(String text)`          | Sets the string content to be displayed in the Glyph Matrix.                                   |
 | void           | `setPosition(int x, int y)`     | Sets the object's top-left corner position on the Glyph Matrix                                 |
 | void           | `setOrientation(int)`           | Sets the object's clockwise rotation angle in degrees, anchored at center. 0 = no rotation (default). Values normalized to 0-360° range |
-| void           | `setBrightness(int brightness)` | Sets the brightness level of the object.<br/><br/>Valid range is from 0: LED off - 255 :brightest (default) |
+| void           | `setBrightness(int brightness)` | Sets the brightness level for the object.<br/><br/>Acceptable values range from 0 (LED off) to 255 (maximum brightness, default). Any value above 255 will be automatically capped at 255. |
 | void           | `setScale(int scale)`           | Sets the scaling factor for the object. The anchor point is in the middle of the object<br/><br/>Valid range: 0-200 0: Object is not visible 100: Original size (default) 200: Double size |
 | GlyphMatrixObject | `build()`                    | Constructs and returns a GlyphMatrix Object instance based on the current settings.             |
 
@@ -341,6 +353,63 @@ GlyphMatrixObject butterfly = butterflyBuilder
 .build();
 ```
 
+## See Also
+### Full Example of Glyph Toy Service
+
+The following code block shows a full implementation of a Glyph Toy Service in Java. It demonstrate how to initialize the GlyphMatrixManager, register a device, and display a custom GlyphMatrixObject (for example, a butterfly image) on the Glyph Matrix. 
+```java
+@Override
+public IBinder onBind(Intent intent) {
+    init();
+    return null;
+}
+
+@Override
+public boolean onUnbind(Intent intent) {
+    mGM.turnOff();
+    mGM.unInit();
+    mGM = null;
+    mCallback = null;
+    return false;
+}
+
+private void init() {
+    mGM = GlyphMatrixManager.getInstance(getApplicationContext());
+    mCallback = new GlyphMatrixManager.Callback() {
+        @Override
+        public void onServiceConnected(ComponentName componentName) {
+            mGM.register(Glyph.DEVICE_23112);
+            action();
+        }
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+        }
+    };
+    mGM.init(mCallback);
+}
+
+private void action() {
+    GlyphMatrixObject.Builder butterflyBuilder = new GlyphMatrixObject.Builder();
+    GlyphMatrixObject butterfly = butterflyBuilder
+            .setImageSource(GlyphMatrixUtils.drawableToBitmap(getResources().getDrawable(R.drawable.butterfly)))
+            .setScale(100)
+            .setOrientation(0)
+            .setPosition(0, 0)
+            .setReverse(false)
+            .build();
+    
+    GlyphMatrixFrame.Builder frameBuilder = new GlyphMatrixFrame.Builder();
+    GlyphMatrixFrame frame = frameBuilder.addTop(butterfly).build();
+    mGM.setMatrixFrame(frame.render());
+}
+```
+
+
+### Other userful resource
+
+For a practical demo project on building Glyph Toys, see the [GlyphMatrix-Example-Project](https://github.com/KenFeng04/GlyphMatrix-Example-Project)<br>
+Kits for building a Glyph Interface experience around devices with a Glyph Light Stripe [Glyph-Developer-Kit](https://github.com/Nothing-Developer-Programme/Glyph-Developer-Kit)
+
 ## Support
 
 If you've found an error in this kit, please file an issue.
@@ -349,7 +418,4 @@ If there is any problem related to development,you can contact: [GDKsupport@noth
 
 However, you may get a faster response from our [community](https://nothing.community/t/glyph-sdk)
 
-## See Also
 
-For a practical demo project on building Glyph Toys, see the [GlyphMatrix-Example-Project](https://github.com/KenFeng04/GlyphMatrix-Example-Project)<br>
-Kits for building a Glyph Interface experience around devices with a Glyph Light Stripe [Glyph-Developer-Kit](https://github.com/Nothing-Developer-Programme/Glyph-Developer-Kit)
