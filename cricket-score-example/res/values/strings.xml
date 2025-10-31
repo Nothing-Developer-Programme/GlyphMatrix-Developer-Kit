@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App name -->
+    <string name="app_name">Cricket Score Glyph</string>
+
+    <!-- Glyph Toy metadata -->
+    <string name="toy_name">Cricket Live Score</string>
+    <string name="toy_summary">Display live cricket scores for your favorite teams on the Glyph Matrix</string>
+
+    <!-- Configuration activity -->
+    <string name="config_title">Cricket Score Settings</string>
+    <string name="config_subtitle">Configure your cricket score display preferences</string>
+
+    <!-- Team selection -->
+    <string name="teams_section_title">Favorite Teams</string>
+    <string name="teams_section_subtitle">Select teams to track (leave empty to show all live matches)</string>
+
+    <!-- API settings -->
+    <string name="api_section_title">API Settings</string>
+    <string name="api_key_label">API Key (optional)</string>
+    <string name="api_key_hint">Enter your CricketData.org API key</string>
+    <string name="custom_api_label">Custom API URL (optional)</string>
+    <string name="custom_api_hint">https://api.example.com/cricket</string>
+
+    <!-- Display settings -->
+    <string name="display_section_title">Display Settings</string>
+    <string name="brightness_label">Brightness</string>
+    <string name="update_interval_label">Update Interval</string>
+    <string name="animations_label">Enable Animations</string>
+    <string name="animations_description">Show cricket ball animation and smooth transitions</string>
+
+    <!-- Buttons -->
+    <string name="save_button">Save Settings</string>
+    <string name="test_button">Test Connection</string>
+    <string name="activate_toy_button">Activate Toy</string>
+    <string name="reset_button">Reset to Defaults</string>
+
+    <!-- Messages -->
+    <string name="config_saved">Settings saved successfully!</string>
+    <string name="test_success">Connected! Found %d live matches</string>
+    <string name="test_error">Error: %s</string>
+    <string name="no_matches">No live matches found</string>
+    <string name="no_favorite_matches">No matches for your favorite teams</string>
+    <string name="api_error">Failed to fetch scores. Check your connection.</string>
+
+    <!-- Instructions -->
+    <string name="instruction_title">How to Use</string>
+    <string name="instruction_1">1. Select your favorite cricket teams</string>
+    <string name="instruction_2">2. Adjust display preferences</string>
+    <string name="instruction_3">3. Tap \'Activate Toy\' to add to Glyph Toys Manager</string>
+    <string name="instruction_4">4. Use Glyph Button to cycle through your toys</string>
+    <string name="instruction_5">5. Long press Glyph Button to change display mode</string>
+
+    <!-- Display modes -->
+    <string name="mode_score">Score Display</string>
+    <string name="mode_run_rate">Run Rate</string>
+    <string name="mode_overs">Overs</string>
+    <string name="mode_status">Match Status</string>
+
+    <!-- Teams -->
+    <string name="team_india">India</string>
+    <string name="team_australia">Australia</string>
+    <string name="team_england">England</string>
+    <string name="team_pakistan">Pakistan</string>
+    <string name="team_south_africa">South Africa</string>
+    <string name="team_new_zealand">New Zealand</string>
+    <string name="team_sri_lanka">Sri Lanka</string>
+    <string name="team_west_indies">West Indies</string>
+    <string name="team_bangladesh">Bangladesh</string>
+    <string name="team_afghanistan">Afghanistan</string>
+
+    <!-- About -->
+    <string name="about_title">About</string>
+    <string name="about_description">Cricket Live Score for Glyph Matrix displays real-time cricket match updates on your Nothing Phone\'s LED matrix. Track your favorite teams and never miss a crucial moment!</string>
+    <string name="version">Version 1.0</string>
+    <string name="developer">Developed with AI Enhancement</string>
+</resources>

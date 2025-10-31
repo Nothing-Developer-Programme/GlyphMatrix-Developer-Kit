@@ -422,7 +422,36 @@ private void action() {
 ```
 
 
-### Other userful resource
+### Example Projects
+
+#### Cricket Live Score Glyph Toy 🏏
+An AI-enhanced example showing how to build a real-world Glyph Toy that displays live cricket scores on the Glyph Matrix. This comprehensive example includes:
+
+- **Complete source code** - Production-ready implementation with API integration
+- **Multiple display modes** - Score, run rate, overs, and match status displays
+- **Smart features** - Favorite team filtering, auto-refresh, AOD support
+- **Animated graphics** - Bouncing cricket ball and smooth text scrolling
+- **Full documentation** - Setup guide, API integration, and customization tips
+
+📁 **Location**: [`cricket-score-example/`](cricket-score-example/)
+📖 **Quick Start**: See [README.md](cricket-score-example/README.md) and [SETUP_GUIDE.md](cricket-score-example/SETUP_GUIDE.md)
+
+**Key Features**:
+- Real-time score updates every 30 seconds
+- Support for multiple cricket APIs (CricketData.org, Entity Sport, custom)
+- Configuration activity for user preferences
+- Long press Glyph Button to cycle display modes
+- Intelligent caching to reduce API calls
+- Mock data fallback for testing
+
+Perfect for learning:
+- Glyph Matrix API usage patterns
+- Service lifecycle management
+- API integration and error handling
+- Custom animations and text rendering
+- User configuration with SharedPreferences
+
+### Other Useful Resources
 
 For a practical demo project on building Glyph Toys, see the [GlyphMatrix-Example-Project](https://github.com/KenFeng04/GlyphMatrix-Example-Project)<br>
 Kits for building a Glyph Interface experience around devices with a Glyph Light Stripe [Glyph-Developer-Kit](https://github.com/Nothing-Developer-Programme/Glyph-Developer-Kit)
