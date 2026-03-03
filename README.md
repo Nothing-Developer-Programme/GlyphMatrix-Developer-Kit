@@ -3,6 +3,15 @@
 
 The Glyph Matrix Developer Kit provides everything you need to know before creating a custom Glyph Matrix experience **in your app** or **building your own Glyph Toy**  on compatible devices.
 
+### Supported Devices
+
+| Device | Identifier | Matrix Length | Glyph Touch | Toy Types |
+|:-------|:-----------|:-------------|:------------|:----------|
+| Phone (3) | `Glyph.DEVICE_23112` | 25 | Yes | All |
+| Phone (4a) Pro | `Glyph.DEVICE_25111p` | 13 | No | AOD only |
+
+Use `Common.getDeviceMatrixLength()` to retrieve the correct matrix length for the current device at runtime.
+
 At its core is the Glyph Matrix Android library that can convert your designs into Glyph Matrix Data and rendering it frame by frame on the Glyph Matrix. It also provides you with identifiers so you can handle events relevant to Glyph Button.
 
 
@@ -198,6 +207,8 @@ private final Messenger serviceMessenger = new Messenger(serviceHandler);
 ### Toy with AOD capability
 If you have set your toy as an AOD toy, your toy will receive EVENT_AOD every minute when your toy has been selected as aod toy.
 
+> **Phone (4a pro) note**: `DEVICE_25111p` does not support Glyph Touch and only features AOD toys. You must set `android:name="com.nothing.glyph.toy.aod_support"` to `1` in your `AndroidManifest.xml`. To enable this feature on device, navigate to **Settings > Glyph Interface > Flip to Glyph > Always-on Glyph Toy**.
+
 
 
 ```java
@@ -264,7 +275,7 @@ Note: The Glyph Toy has a higher display priority than third party app usage on 
 | void           | `init(Callback callback)`       | Used for binding the Service. It is recommended to be created when components start.            |
 | void           | `unInit()`                      | Used for unbinding the Service. It is recommended to be destroyed when components end.          |
 | void           | `closeAppMatrix()`              | Closes the app matrix display. Use this function to stop displaying content on the Glyph Matrix from your app. Required phone system version on 20250801 or later. |
-| void           | `register(String target)`       | Register your app for service. You need to send which target device you are working on. For Phone 3, this should be Glyph.DEVICE_23112|
+| void           | `register(String target)`       | Register your app for service. You need to send which target device you are working on. For Phone (3), use `Glyph.DEVICE_23112`. For Phone (4a pro), use `Glyph.DEVICE_25111p`.|
 | void           | `setMatrixFrame(int[] color)`   | Updates the Glyph Matrix display using raw color data. This overload expects a 25x25 integer array. |
 | void           | `setMatrixFrame(GlyphMatrixFrame)` | Updates the Glyph Matrix display using a structured GlyphMatrixFrame object.                 |
 | void           | `setAppMatrixFrame(int[] color)` | Same as setMatrixFrame(int[] color). If you want to use Glyph Matrix in your app. Please use this function to update Glyph Matrix display. Required phone system version on 20250801 or later. |
@@ -273,7 +284,7 @@ Note: The Glyph Toy has a higher display priority than third party app usage on 
 
 ### GlyphMatrixFrame
 
-GlyphMatrixFrame is in charge of handling and displaying the Glyph Matrix. Its default size is 25x25, but you can easily customise it using the Builder. 
+GlyphMatrixFrame is in charge of handling and displaying the Glyph Matrix. The matrix size depends on the device: 25x25 for Phone (3) and 13x13 for Phone (4a pro). Use `Common.getDeviceMatrixLength()` to get the correct matrix length for the current device. You can also customise the size using the Builder.
 
 <p align="center">
   <div align="center" style="width:100%;">
@@ -395,6 +406,7 @@ private void init() {
     mCallback = new GlyphMatrixManager.Callback() {
         @Override
         public void onServiceConnected(ComponentName componentName) {
+            // Use Glyph.DEVICE_23112 for Phone (3), or Glyph.DEVICE_25111p for Phone (4a pro)
             mGM.register(Glyph.DEVICE_23112);
             action();
         }
