@@ -54,8 +54,11 @@ The following code demonstrates how to register two toys. Each service includes 
 
 To prepare a preview image, please refer to [Section 3: Create your Glyph Toy preview](#3-create-your-glyph-toy-preview).
 
+### Phone3
 <img src="image/Glyph Toy AndroidManifest.xml.svg" alt="100widget @Glyph Toy AndroidManifest.xml" width="900"/>
 
+### Phone (4a) Pro
+<img src="image/25111_manifest.svg" alt="100widget @Glyph Toy AndroidManifest.xml" width="900"/>
 
 The first example provides a complete setup with optional features, while the second shows a minimal configuration.
 
@@ -126,10 +129,16 @@ To create a Glyph Toy preview image that matches the official toy and provides y
 
 We recommend exporting your preview image as an SVG and to learn how to import your SVG preview into your project, check [Running Vector Asset Studio](https://developer.android.com/studio/write/vector-asset-studio#svg) section in the Android studio documentation.
 
-
+### Phone3
 <p align="center">
   <img src="image/Phone 3 Glyph Toy icon specification.svg" width="100%" alt="Phone 3 Glyph Toy icon specification">
 </p>
+
+### Phone (4a) Pro
+<p align="center">
+  <img src="image/25111_specification.svg" width="60%" alt="Phone (4a) Pro Glyph Toy icon specification">
+</p>
+
 
 
 
@@ -263,7 +272,7 @@ In addition to displaying content on the Glyph Matrix through the Glyph Toy serv
 Note: The Glyph Toy has a higher display priority than third party app usage on Glyph Matrix. If the user interacts with the Glyph Button, the Glyph Toy carousel it triggers will override your app’s content on the Matrix.
 
 <p align="center">
-  <img src="image/Glyph Matrix Display Priority.svg" alt="Glyph Matrix Priority" style="display:block; width:100%; max-width:100%;">
+  <img src="image/23111_25111_priority.svg" alt="Glyph Matrix Priority" style="display:block; width:100%; max-width:100%;">
 </p>
 
 
@@ -288,7 +297,7 @@ GlyphMatrixFrame is in charge of handling and displaying the Glyph Matrix. The m
 
 <p align="center">
   <div align="center" style="width:100%;">
-    <img src="image/Phone 3 Glyph Matrix LED allocation.svg" alt="Phone 3 Glyph Matrix LED allocation" style="display:block; width:100%; max-width:100%;">
+    <img src="image/23111_25111_LED_allocation.svg" alt="Phone 3 Glyph Matrix LED allocation" style="display:block; width:100%; max-width:100%;">
   </div>
 </p>
 
