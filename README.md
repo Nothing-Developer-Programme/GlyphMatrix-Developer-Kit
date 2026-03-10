@@ -54,8 +54,8 @@ The following code demonstrates how to register two toys. Each service includes 
 
 To prepare a preview image, please refer to [Section 3: Create your Glyph Toy preview](#3-create-your-glyph-toy-preview).
 
-### Phone3
-<img src="image/Glyph Toy AndroidManifest.xml.svg" alt="100widget @Glyph Toy AndroidManifest.xml" width="900"/>
+### Phone (3)
+<img src="image/23112_manifest.svg" alt="100widget @Glyph Toy AndroidManifest.xml" width="900"/>
 
 ### Phone (4a) Pro
 <img src="image/25111_manifest.svg" alt="100widget @Glyph Toy AndroidManifest.xml" width="900"/>
@@ -125,18 +125,16 @@ The first example provides a complete setup with optional features, while the se
 
 #### 3 Create your Glyph Toy preview 
 
-To create a Glyph Toy preview image that matches the official toy and provides your users with a consistent experience, you can reference the specifications below and the [Figma template](https://www.figma.com/design/ryjvvPM2ZxI3OGdajSzb5J/Glyph-Toy--preview-icon-template?node-id=1-12&t=HvVOxxNmb5EK2i2g-1). We have also created a [Figma plugin](https://www.figma.com/community/plugin/1526505846480298025) that can automatically convert any 1:1 design image into a Glyph Matrix Preview image to save you some time :)
-
 We recommend exporting your preview image as an SVG and to learn how to import your SVG preview into your project, check [Running Vector Asset Studio](https://developer.android.com/studio/write/vector-asset-studio#svg) section in the Android studio documentation.
 
-### Phone3
+### Phone (3)
 <p align="center">
-  <img src="image/Phone 3 Glyph Toy icon specification.svg" width="100%" alt="Phone 3 Glyph Toy icon specification">
+  <img src="image/23112_spec.svg" width="100%" alt="Phone 3 Glyph Toy icon specification">
 </p>
 
 ### Phone (4a) Pro
 <p align="center">
-  <img src="image/25111_specification.svg" width="60%" alt="Phone (4a) Pro Glyph Toy icon specification">
+  <img src="image/25111_spec.svg" width="100%" alt="Phone (4a) Pro Glyph Toy icon specification">
 </p>
 
 
