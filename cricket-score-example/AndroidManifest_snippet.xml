@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Add this to your AndroidManifest.xml
+    Place within the <application> tag
+-->
+
+<!-- Required Permission (place in <manifest> tag, before <application>) -->
+<uses-permission android:name="com.nothing.ketchum.permission.ENABLE"/>
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+<!-- Inside <application> tag -->
+
+<!-- Cricket Score Glyph Toy Service -->
+<service
+    android:name=".CricketScoreToyService"
+    android:exported="true">
+    <intent-filter>
+        <action android:name="com.nothing.glyph.TOY"/>
+    </intent-filter>
+
+    <!-- Required: Toy name for Glyph Toys manager -->
+    <meta-data
+        android:name="com.nothing.glyph.toy.name"
+        android:resource="@string/toy_name"/>
+
+    <!-- Required: Preview image -->
+    <meta-data
+        android:name="com.nothing.glyph.toy.image"
+        android:resource="@drawable/cricket_score_preview"/>
+
+    <!-- Optional: Description -->
+    <meta-data
+        android:name="com.nothing.glyph.toy.summary"
+        android:resource="@string/toy_summary"/>
+
+    <!-- Optional: Configuration activity -->
+    <meta-data
+        android:name="com.nothing.glyph.toy.introduction"
+        android:value=".CricketScoreConfigActivity"/>
+
+    <!-- Optional: Enable long press to cycle display modes -->
+    <meta-data
+        android:name="com.nothing.glyph.toy.longpress"
+        android:value="1"/>
+
+    <!-- Optional: Enable Always-On Display support -->
+    <meta-data
+        android:name="com.nothing.glyph.toy.aod_support"
+        android:value="1"/>
+</service>
+
+<!-- Configuration Activity -->
+<activity
+    android:name=".CricketScoreConfigActivity"
+    android:label="@string/config_title"
+    android:theme="@style/Theme.AppCompat.Light"
+    android:exported="true">
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+    </intent-filter>
+</activity>
